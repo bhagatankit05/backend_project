@@ -1,12 +1,21 @@
 import dotenv from "dotenv";
-import connectToDatabase  from "./db/database.js";
+import connectToDatabase from "./db/database.js";
 
 dotenv.config({
-    path: "./env"
+    path: "./.env"
 })
 
 
 connectToDatabase()
+    .then(() => {
+        console.log("Database connected successfully");
+        console.log("Server is running on port", process.env.PORT || 3000);
+
+    })
+    .catch((error) => {
+        console.error("Error connecting to the database:", error);
+        process.exit(1); // Exit the process with a failure code
+    });
 
 
 

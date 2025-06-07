@@ -17,7 +17,9 @@ import fs from "fs";
        const response = await cloudAnkit.uploader.upload(localFilePath,{
             resource_type: 'auto'}
         )
-        console.log("File uploaded successfully",response.url);
+       // console.log("File uploaded successfully",response.url);
+       fs.unlinkSync(localFilePath); // Delete the file after upload
+         // console.log("Local file deleted successfully");
         return response;
 
     } catch (error) {
