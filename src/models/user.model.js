@@ -71,7 +71,8 @@ userSchema.methods.generateAccessToken = function () {
     // Generate an access token using the user's ID and a secret key
     return jwt.sign({ _id: this._id,
         username: this.username,
-        email: this.email
+        email: this.email,
+        fullname: this.fullname,
 
     }, process.env.ACCESS_TOKEN_SECRET, { expiresIn: process.env.ACCESS_TOKEN_EXPIRY });
 }
